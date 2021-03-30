@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="card w-100 mt-3">
+  <div class="card-body align-self-center">
+
+    <form action="" method="POST">
+    {% csrf_token %}
+        {{formset.management_form}}
+        {% for form in formset %}
+            {{form}}
+            <hr>
+        {% endfor %}
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+  </div>
+</div>
+
+
+
+
+{% endblock content %}

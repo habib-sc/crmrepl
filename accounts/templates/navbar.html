@@ -1,0 +1,39 @@
+{% load static %}
+
+<style>
+  #hello-user{
+    font-size: 18px;
+    color: #FFF;
+    margin-right: 20px;
+    width: 200px;
+  }
+  #logout-user{
+    font-size: 17px;
+    color: #FFF;
+    margin-right: 20px;
+    text-decoration: none;
+  }
+  
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+  <div class="container-fluid">
+    <img src="{% static '/images/digitosys_crm_logo.png' %}" alt="">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    {% if request.user.is_staff %}
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link text-light active" aria-current="page" href="{% url 'home'%}">Dashboard</a>
+          <a class="nav-link text-light" href="{% url 'products'%}">Products</a>
+        </div>
+      </div>
+    {% endif %}
+    
+  </div>
+
+  <span id="hello-user" >Hello, {{request.user}}</span>
+  <span><a id="logout-user" href="{% url 'logout' %}">Logout</a></span>
+
+</nav>
